@@ -5,17 +5,31 @@
 Uppgift 1 - REST-webbtjänst
 ***************************************************
 
+Källkoden ska vara väl kommenterad, 
+-----------och publicerad till ett Github repository.
+README fixas inför inl
+En README-fil ska finnas i ditt repo som dokumenterar 
+din webbtjänst, samt inkluderar URI's (webblänkar) 
+för att använda CRUD. Här är ett exempel: README för API
+Det ska finnas en README-fil som ger en beskrivning 
+av din webbapplikation.
+
+Båda dessa ska innehålla en README-fil med beskrivning av 
+lösningen samt eventuellt webblänk(ar) till publicerade 
+laborationer för testkörning.
+
+
+
+
 ??????????????3 CRUD
 ?????????????Cors påverkar åtkomsten till HTTP från olika domäner, kan styras via applikationer
-om man öppnar helt, använd helst nyckel isf
+-------------om man öppnar helt, använd helst nyckel isf
 ?????????????????Webbtjänsten skall kunna hantera CRUD-operationer, Create Read Update och Delete.
 
-?????????Webbtjänst skapad enligt kraven ovan. Data från webbtjänsten ska presenteras i JSON-format.
-??????????Implementerat CRUD (Create Read Update Delete) som använder följande verb: GET, POST, PUT och DELETE.
-??????????Webbtjänsten ska ha möjlighet till "cross origin request". Det ska vara möjligt att testköra din webbtjänst från annan domän än den du publicerad till (om den är publicerad).
-Källkoden ska vara väl kommenterad, och publicerad till ett Github repository.
-En README-fil ska finnas i ditt repo som dokumenterar din webbtjänst, samt inkluderar URI's (webblänkar) för att använda CRUD. Här är ett exempel: README för API
-Tänk på att validera input innan lagring i databas, och returnera tydliga felmeddelanden om något saknas.
+-----------?????????Webbtjänst skapad enligt kraven ovan. Data från webbtjänsten ska presenteras i JSON-format.
+------------??????????Implementerat CRUD (Create Read Update Delete) som använder följande verb: GET, POST, PUT och DELETE.
+-------------??????????Webbtjänsten ska ha möjlighet till "cross origin request". Det ska vara möjligt att testköra din webbtjänst från annan domän än den du publicerad till (om den är publicerad).
+----------Tänk på att validera input innan lagring i databas, och returnera tydliga felmeddelanden om något saknas.
 
 ------------Webbplatsen ska använda Fetch API för att hämta (GET),
 -----------skicka data (POST) samt radera (DELETE) från och till webbtjänsten.
