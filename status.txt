@@ -4,110 +4,36 @@
 
 Uppgift 1 - REST-webbtjänst
 ***************************************************
-1. Er diagram
-2, inst nodejs, express, sqlite3
-3 CRUD
-4 json
-behöver anv postman för rest
-Cors påverkar åtkomsten till HTTP från olika domäner, kan styras via applikationer
+
+??????????????3 CRUD
+?????????????Cors påverkar åtkomsten till HTTP från olika domäner, kan styras via applikationer
 om man öppnar helt, använd helst nyckel isf
+?????????????????Webbtjänsten skall kunna hantera CRUD-operationer, Create Read Update och Delete.
 
-planera REST:
-1. Vilka objekt ska vara resurser för apiet? (vilka tabeller)
-2. Planera vilka URL som behövs (sökvägar) www.bla.se/users
-3. Planera hur datan ska presenteras (json) objekt, arrayer 
-4. bestäm HTTP metod för var resurs vilka CRUD metodre ska finnas
-
-Uppgiften går ut på att skapa en applikation som hanterar arbetserfarenheter, 
-så som tidigare arbetsplatser, vad du arbetade med, 
-längd på anställning etctera (du kan användad fiktiv data om så önskas).
-
-Webbtjänsten skall kunna hantera CRUD-operationer, Create Read Update och Delete.
-
-Webbtjänsten skall skapas med hjälp av NodeJs, Express samt en valfri relations-databas.
-
-***************************
-Följande funktionalitet ska finnas i din lösning för godkänt:
-
-Webbtjänst skapad enligt kraven ovan. Data från webbtjänsten ska presenteras i JSON-format.
-Implementerat CRUD (Create Read Update Delete) som använder följande verb: GET, POST, PUT och DELETE.
-Webbtjänsten ska ha möjlighet till "cross origin request". Det ska vara möjligt att testköra din webbtjänst från annan domän än den du publicerad till (om den är publicerad).
+?????????Webbtjänst skapad enligt kraven ovan. Data från webbtjänsten ska presenteras i JSON-format.
+??????????Implementerat CRUD (Create Read Update Delete) som använder följande verb: GET, POST, PUT och DELETE.
+??????????Webbtjänsten ska ha möjlighet till "cross origin request". Det ska vara möjligt att testköra din webbtjänst från annan domän än den du publicerad till (om den är publicerad).
 Källkoden ska vara väl kommenterad, och publicerad till ett Github repository.
 En README-fil ska finnas i ditt repo som dokumenterar din webbtjänst, samt inkluderar URI's (webblänkar) för att använda CRUD. Här är ett exempel: README för API
 Tänk på att validera input innan lagring i databas, och returnera tydliga felmeddelanden om något saknas.
 
-*******************
-Du väljer själv vilken uppsättning med data du vill lagra, 
-grundkravet är att databasen innehåller minst fyra stycken fält.
-
-Ett förslag på datastruktur är:
-
-databas: cv
-tabell: workexperience
-----------------------------------------------------------------------------------------------
-| id | companyname | jobtitle | location | extra: startdate | enddate | description |  
-----------------------------------------------------------------------------------------------
-            
-Enligt ovan förslag skulle datat kunna vara:
-
-id - Ett unikt id för varje rad i tabellen, skall vara autoinkrementerande och primärnyckel.
-companyname - Namnet på det företag där arbetet utfördes, exempelvis "Mittuniversitetet".
-jobtitle - Arbetsrollens titel eller befattning, exempelvis "Labbhandledare".
-location - Platsen där arbetet utfördes, exempelvis "Sundsvall".
-startdate - Datumet då arbetet påbörjades, exempelvis "2019-01-01".
-enddate - Datumet då arbetet avslutades, exempelvis "2019-12-31".
-description - En beskrivning av arbetet, exempelvis "Handledning av studenter i kursen DT057G".
-Funktionella krav
-
-************************************
+------------Webbplatsen ska använda Fetch API för att hämta (GET),
+-----------skicka data (POST) samt radera (DELETE) från och till webbtjänsten.
 
 
-
-Uppgift 2 - skapa en webbplats som använder Fetch API
-Skapa en webbapplikation som konsumerar din webbtjänst från Uppgift 1. 
-Gör denna lösning fristående från din webbtjänst.
-
--Denna webbplats skall vara en fristående frontend-applikation, 
-ej baserad på Express/EJS - utan en ren HTML/CSS/JavaScript-webbplats.
-
--Webbplatsen ska 
-*läsa ut befintliga poster och ha möjlighet att 
-*lägga till nya via ett formulär.
-
--Webbplatsen skall (minst) innehålla tre undersidor:
-
-*index.html - Här ska alla poster visas i en lista.
-*add.html - Här ska det finnas ett formulär för att lägga till nya poster.
-*about.html - En sida som beskriver webbplatsen och dess syfte, 
-samt information om vilken databas-server som använts.
-Skriv även om slutsatser du dragit av uppgiften.
-
-
-Funktionella krav
-Följande funktionalitet ska finnas i din lösning för godkänt:
-
--Webbplatsen ska använda Fetch API för att hämta (GET),
- skicka data (POST) samt radera (DELETE) från och till webbtjänsten.
--Lösningen ska skapas med HTML, CSS och JavaScript. 
-Använd med fördel en automatiserad utvecklingsmiljö från tidigare kurs. 
-Och SASS/SCSS är ok att använda.
+***********
+redovisning
+************
 
 Lösningen ska publiceras till publikt tillgänglig webbhost alternativt redovisas med en video-demonstration.
 Källkoden ska publiceras till ett Github (eller annan webbtjänst för Git) repository.
 Det ska finnas en README-fil som ger en beskrivning av din webbapplikation.
-Valfri funktionalitet
-Ovanstående funktionella krav måste vara uppfyllda för godkänt. 
-Nedan är några saker som du kan lägga till i din lösning 
-(bra träning inför projektuppgiften):
-
-Möjlighet att uppdatera (PUT) poster i din kurslista.
-Publicering eller video-demonstration
-Det finns alternativ för redovisning av uppgiften:
 
 Publicera din webbsida och webbtjänst på publikt tillgänglig webbhost.
 Var noga med att testköra efter publicering, och säkerställ att allting fungerar korrekt.
 Skapa en video-demonstration av din lösning där du visar och berättar hur denna fungerar. 
 Video-demonstrationen bör vara max fem minuter lång.
+
 Inlämning
 Moment 2 lämnas in som webblänkar till online git-repository för vardera lösning:
 
@@ -118,12 +44,82 @@ Båda dessa ska innehålla en README-fil med beskrivning av lösningen samt even
 Bifoga även webblänkar till publicerad webbtjänst och webbplats alternativt länk till video-demonstration som kommentar i inlämningslådan.
 
 
-Bekanta dig med begreppet webbtjänster och förstå hur man kan använda dessa för att skapa moderna och plattformsoberoende applikationer.
-Kunna skapa en REST-baserad webbtjänst som använder en relationsbaserad databasserver för lagring.
-Kunna använda Fetch API för att konsumera en webbtjänst.
-Denna uppgift är uppdelad i två praktiskt delar - en för att skapa en webbtjänst och en för att skapa en webbplats som använder REST-webbtjänsten.
 
-Teori och läsanvisningar
-Gå igenom dessa innan du gör uppgifterna.
 
-Uppgifter
+-----------1. Er diagram
+-------------2, inst nodejs, express, sqlite3
+
+------------4 json
+---------------behöver anv postman för rest
+
+planera REST:
+1. Vilka objekt ska vara resurser för apiet? (vilka tabeller)
+2. Planera vilka URL som behövs (sökvägar) www.bla.se/users
+3. Planera hur datan ska presenteras (json) objekt, arrayer 
+4. bestäm HTTP metod för var resurs vilka CRUD metodre ska finnas
+
+----------Uppgiften går ut på att skapa en applikation som hanterar arbetserfarenheter, 
+----------så som tidigare arbetsplatser, vad du arbetade med, 
+----------längd på anställning etctera (du kan användad fiktiv data om så önskas).
+
+
+-----------------Webbtjänsten skall skapas med hjälp av NodeJs, Express samt en valfri relations-databas.
+
+***************************
+Följande funktionalitet ska finnas i din lösning för godkänt:
+
+
+*******************
+---------------Du väljer själv vilken uppsättning med data du vill lagra, 
+---------------grundkravet är att databasen innehåller minst fyra stycken fält.
+
+---------Ett förslag på datastruktur är:
+
+----------databas: cv
+------------tabell: workexperience
+----------------------------------------------------------------------------------------------
+------------| id | companyname | jobtitle | location | extra: startdate | enddate | description |  
+----------------------------------------------------------------------------------------------
+            
+------------Enligt ovan förslag skulle datat kunna vara:
+
+----------id - Ett unikt id för varje rad i tabellen, skall vara autoinkrementerande och primärnyckel.
+----------companyname - Namnet på det företag där arbetet utfördes, exempelvis "Mittuniversitetet".
+----------jobtitle - Arbetsrollens titel eller befattning, exempelvis "Labbhandledare".
+----------location - Platsen där arbetet utfördes, exempelvis "Sundsvall".
+----------startdate - Datumet då arbetet påbörjades, exempelvis "2019-01-01".
+----------enddate - Datumet då arbetet avslutades, exempelvis "2019-12-31".
+----------description - En beskrivning av arbetet, exempelvis "Handledning av studenter i kursen DT057G".
+
+
+************************************
+
+
+
+--------Uppgift 2 - skapa en webbplats som använder Fetch API
+-----------Skapa en webbapplikation som konsumerar din webbtjänst från Uppgift 1. 
+-----------Gör denna lösning fristående från din webbtjänst.
+
+----------Denna webbplats skall vara en fristående frontend-applikation, 
+-----------ej baserad på Express/EJS - utan en ren HTML/CSS/JavaScript-webbplats.
+
+-Webbplatsen ska 
+----------*läsa ut befintliga poster och ha möjlighet att 
+----------*lägga till nya via ett formulär.
+
+-----------Webbplatsen skall (minst) innehålla tre undersidor:
+
+----------*index.html - Här ska alla poster visas i en lista.
+----------*add.html - Här ska det finnas ett formulär för att lägga till nya poster.
+----------*about.html - En sida som beskriver webbplatsen och dess syfte, 
+----------samt information om vilken databas-server som använts.
+----------Skriv även om slutsatser du dragit av uppgiften.
+
+
+-----------------------Lösningen ska skapas med HTML, CSS och JavaScript. 
+------------------------Använd med fördel en automatiserad utvecklingsmiljö från tidigare kurs. 
+-------------------------Och SASS/SCSS är ok att använda.
+
+
+
+

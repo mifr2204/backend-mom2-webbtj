@@ -26,7 +26,9 @@ db.serialize(() => {
 //prepared statements som ökar säkerheten
 const stmt = db.prepare('INSERT INTO workplaces(companyname, location, startdate, enddate, title, description) VALUES(?,?,?,?,?,?);');
 
-stmt.run("Arbetsp 1", "Nässjö", "2022-01-01", "2023-01-01", "Slav", "tråkiga sysslor");
+stmt.run("Frösunda", "Nässjö", "2010-01-01", "2016-02-01", "Personlig assistent/teamleader", "Vara hos olika kunder och hjälpa dom i vardagen, planera schema med mera");
+stmt.run("Nytida", "Taberg", "2016-02-01", "2020-08-01", "Gruppchef", "Schemaläggning, varksamhetsplanering, hålla personalmöten m.m.");
+stmt.run("Espressohouse", "Nässjö", "2023-06-01", "2024-10-07", "Barista", "Tillverka och servera olika drycker och lättare måltider");
 stmt.finalize();
 
 db.close();

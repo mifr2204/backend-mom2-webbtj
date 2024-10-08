@@ -16,30 +16,65 @@ const port = 3000;
 
 //app.set("view engine", "ejs");
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  Origin: 'http://127.0.0.1:5000/',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+}));
 
 //Start av applikationen
 app.listen(port, () => {
     console.log("Started on port: " + port);
 });
 
+
+//hämta alla arbetsplatser
 app.get("/workplaces", (req, res) => {
     //Hämta data från db
     db.all("SELECT * FROM workplaces;", (err, results) => {
-        //db.all("SELECT * FROM workplaces;", (err, rows) => {
+       
         if(err) {
           res.status(500).json({error: "Error" + err});
           return;
-            //console.error(err.message);
         }
         if(results.length === 0) {
-            res.status(200).json({message: "No workplaces found"});
+            res.status(404).json({message: "No workplaces found"});
         }else{
             res.json(results);
         }
     })
 });
 
+//radera arbetsplats
+app.delete('/workplaces/:id', (req, res) => {
+  
+  let id = req.params.id;
+ 
+  db.all("SELECT * FROM workplaces WHERE id=" + id + ";", (err, results) => {
+  
+    if(err) {
+      res.status(500).json({error: "Error" + err});
+      return;
+    }
+    if(results.length === 0) {
+        res.status(404).json({message: "No workplaces found"});
+    }else{
+      const stmt = db.prepare("DELETE FROM workplaces WHERE id=?;", (err, results) => {
+
+        if(err) {
+          res.status(500).json({error: "Error" + err});
+          return;
+        }
+        stmt.run(id);
+        stmt.finalize();
+
+        res.json({message: "The workplace is deleted ", id});
+        
+      })
+    } 
+  }) 
+});
+
+//lägga till arbetsplats
 app.post("/workplaces", (req, res) => {
     let companyname = req.body.companyname;
     let location = req.body.location;
@@ -47,6 +82,27 @@ app.post("/workplaces", (req, res) => {
     let enddate = req.body.enddate;
     let title = req.body.title;
     let description = req.body.description;
+
+    //felhantering
+    let errors = {
+        message: "",
+        detail: "",
+        https_response: {
+
+        }
+    }
+
+    if(!companyname || !location || !startdate || !enddate || !title || !description) {
+        
+        errors.message = "All fields need to be filled in"
+        errors.detail = "Företagsnamn, plats, startdatum, slutdatum, titel och beskrivning måste finnas med i JSON"
+        errors.https_response.message = "Bad request";
+        errors.https_response.code = 400;
+        
+        res.status(400).json(errors);
+     
+        return;
+    }
 
     const stmt = db.prepare('INSERT INTO workplaces(companyname, location, startdate, enddate, title, description) VALUES(?,?,?,?,?,?);',[companyname, location, startdate, enddate, title, description], (err, results) => {
         if(err){
@@ -68,149 +124,69 @@ app.post("/workplaces", (req, res) => {
 
         res.json({message: "The workplace is added", workplace});
     });
-    
 });
 
-//app.use(bodyParser.urlencoded({ extended: true }));
-/*
-//Routing index
-app.get('/', (req, res) => {
-  //lista kurser
-  db.all("SELECT * FROM coursers;", (err, rows) => {
-    if(err) {
-      console.error(err.message);
+//ändra arbetsplats
+app.put("/workplaces/:id", (req, res) => {
+    let id = req.params.id;
+    let companyname = req.body.companyname;
+    let location = req.body.location;
+    let startdate = req.body.startdate;
+    let enddate = req.body.enddate;
+    let title = req.body.title;
+    let description = req.body.description;
+
+    //felhantering
+    let errors = {
+        message: "",
+        detail: "",
+        https_response: {
+
+        }
     }
-
-    res.render("index", {
-      error: "",
-      rows: rows
-    });
-
-  });
-});
-
-//Routing add
-app.get('/add', (req, res) => {
-
-  res.render("add", {
-    error: "",
-    message: "",
-  });
-
-});
-
-//Routing about
-app.get('/about', (req, res) => {
-
-  res.render("about", {
-    error: "",
-  });
-
-});
-
-//Routing edit
-app.get('/edit', (req, res) => {
-
-  res.render("edit", {
-    error: "",
-  });
-
-});
-
-//skapa ny kurs
-app.post("/add", (req, res) => {
-  let name = req.body.name;
-  let code = req.body.code;
-  let progression = req.body.progression;
-  let syllabus = req.body.syllabus;
-  let error = "";
-  let message = "";
-
-  //Kontroll av input ny kurs
-  if(name != "" && code != "" && progression != "" && syllabus != "") {
-    const stmt = db.prepare('INSERT INTO coursers(name, code, progression, syllabus) VALUES(?,?,?,?);');
-    stmt.run(name, code, progression, syllabus);
-    stmt.finalize();
-    message = "Kursen är tillagd";
-    res.render("add", {
-      message: message,
-      error: "",
-    });
-  }else{
-    error = "Alla fält måste fyllas i!";
+    console.log("tttt" + companyname + location + enddate + title + description);
+    if(!companyname || !location || !startdate || !enddate || !title || !description) {
+        
+      errors.message = "All fields needs to be filled in"
+      errors.detail = "Företagsnamn, plats, startdatum, slutdatum, titel och beskrivning måste finnas med i JSON"
+      errors.https_response.message = "Bad request";
+      errors.https_response.code = 400;
+      
+      res.status(400).json(errors);
+   
+      return;
   }
+
+  db.all("SELECT * FROM workplaces WHERE id=" + id + ";", (err, results) => {
+   
+    if(err) {
+      res.status(500).json({error: "Error" + err});
+      return;
+    }
+    if(results.length === 0) {
+        res.status(404).json({message: "No workplaces found"});
+    }else{
+      const stmt = db.prepare('UPDATE workplaces SET companyname=?, location=?, startdate=?, enddate=?, title=?, description=? WHERE id=?;', (err, results) => {
+      if(err){
+          res.status(500).json({error: "something went wrong:" + err});
+          return;
+      }
+      stmt.run(companyname, location, startdate, enddate, title, description, id);
+      stmt.finalize();
   
-  res.render("add", {
-    error: error,
-    message: "",
-  });
+      //skapar objekt
+      let workplace = {
+          companyname: companyname,
+          location: location,
+          startdate: startdate,
+          enddate: enddate,
+          title: title,
+          description: description
+      };
 
+      res.json({message: "The workplace is updated", workplace});
+        
+      })
+    } 
+  }) 
 });
-
-//Ta bort kurs
-app.get("/delete/:id", (req, res) => {
-  let id = req.params.id;
-
-  //ta bort kurs från databasen
-  db.run("DELETE FROM coursers WHERE ID=?;", id, (err) => {
-    if(err) {
-      console.error(err.message);
-    }
-
-    //skicka till startsidan
-    res.redirect("/");
-  });
-
-});
-
-//hämta ändra kurs sida
-app.get("/edit/:id", (req, res)  => {
-  let id = req.params.id;
-
-  //Hämta kurs i databasen
-  db.get("SELECT * FROM coursers WHERE ID=?;", id, (err, row) => {
-    if(err) {
-      console.error(err.message);
-    }
-    //visa edit sidan
-    res.render("edit", {
-      row: row,
-      error: ""
-    });
-  });
-});
-//Ändra kurs
-app.post("/edit/:id", (req, res)  => {
-  let id = req.params.id;
-  let name = req.body.name;
-  let code = req.body.code;
-  let progression = req.body.progression;
-  let syllabus = req.body.syllabus;
-  let error = "";
-  //kontroll input
-  if(name != "" && code != "" && progression != "" && syllabus != "") {
-    const stmt = db.prepare('UPDATE coursers SET name=?, code=?, progression=?, syllabus=? WHERE id=?');
-    stmt.run(name, code, progression, syllabus, id);
-    stmt.finalize();
-    res.redirect("/");
-  }else{
-    error = "Alla fält måste vara ifyllda, försök igen";
-  }
-  
-//Hämta kurs i databasen
-db.get("SELECT * FROM coursers WHERE ID=?;", id, (err, row) => {
-  if(err) {
-    console.error(err.message);
-  }
-  //visa edit sidan
-  res.render("edit", {
-    row: row,
-    error: error
-  });
-});
-    
-});
-
-
-
-*/
