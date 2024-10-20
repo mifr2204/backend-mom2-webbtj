@@ -14,7 +14,6 @@ const db = new sqlite3.Database("./db/CV.db");
 const app = express();
 const port = 3000;
 
-//app.set("view engine", "ejs");
 app.use(express.json());
 app.use(cors({
   Origin: 'http://127.0.0.1:5000/',
@@ -48,6 +47,7 @@ app.get("/workplaces", (req, res) => {
 app.delete('/workplaces/:id', (req, res) => {
   
   let id = req.params.id;
+ 
  
   db.all("SELECT * FROM workplaces WHERE id=" + id + ";", (err, results) => {
   
@@ -144,7 +144,7 @@ app.put("/workplaces/:id", (req, res) => {
 
         }
     }
-    console.log("tttt" + companyname + location + enddate + title + description);
+
     if(!companyname || !location || !startdate || !enddate || !title || !description) {
         
       errors.message = "All fields needs to be filled in"
@@ -156,7 +156,7 @@ app.put("/workplaces/:id", (req, res) => {
    
       return;
   }
-
+  //hämtar arbetsplats och ändrar den
   db.all("SELECT * FROM workplaces WHERE id=" + id + ";", (err, results) => {
    
     if(err) {
