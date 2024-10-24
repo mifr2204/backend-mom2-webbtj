@@ -1,9 +1,10 @@
 //Anslutning för Sqlite
 const sqlite3 = require("sqlite3").verbose();
+
 //Skapa databas
 const db = new sqlite3.Database("./db/CV.db");
-//kör flera kommandon i ordning
 
+//kör flera kommandon i ordning
 db.serialize(() => {
     db.run(
         "DROP TABLE IF EXISTS workplaces"

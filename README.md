@@ -1,16 +1,25 @@
 I detta repository har jag skapat en enkel REST API med Express.
 Jag har använt Sqlite3 som databas. 
 Funktionalitet för CRUD finns
+CORS har inga begränsningar i denna applikation men skulle ha i andra situationer
+
+Apiet använder port 3000
+När databasen är startad kan man starta en lokal webbserver med port 5500 och kan då se webbplatsen 
+ex http://127.0.0.1:5500/index.html
 
 Länk
 En liveversion av APIet finns tillgänglig på följande URL: https://testserver.test/courses
 
 Installation, databas
-Sqlite3 används som databas av APIet. Klona ner källkodsfilerna, kör kommandot: npm install 
-Andvänd kommandot: npm run install för att installera Installations-skriptet skapar följande databastabeller:
 
-Tabell   	Fält
-workplaces	id (INTEGER), companyname (TEXT), location (TEXT), startdate(DATE), enddate (DATE), title (TEXT), description (TEXT), timestamp (TIMESTAMP)
+Sqlite3 används som databas av APIet. Klona ner källkodsfilerna, kör kommandot: npm install 
+För att starta applikationen kör npm start 
+
+Install skapar följande databastabeller:
+
+Tabell:  workplaces 	
+Fält:
+id (INTEGER), companyname (TEXT), location (TEXT), startdate(DATE), enddate (DATE), title (TEXT), description (TEXT), timestamp (TIMESTAMP)
 
 Användning
 Hur man nå APIet:
@@ -32,3 +41,16 @@ Ett arbetsplats-objekt returneras/skickas som JSON med följande struktur:
    "title": "Personlig assistent/teamleader",
    "description": "Vara hos olika kunder och hjälpa dom i vardagen, planera schema med mera"
 }
+
+
+
+
+*****************************************
+
+
+
+Länk
+Apiet finns live på: https://backendm1.azurewebsites.net/
+
+
+

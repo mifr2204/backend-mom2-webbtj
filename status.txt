@@ -5,15 +5,15 @@
 Uppgift 1 - REST-webbtjänst
 ***************************************************
 
-Källkoden ska vara väl kommenterad, 
------------och publicerad till ett Github repository.
+
+
+
 README fixas inför inl
 En README-fil ska finnas i ditt repo som dokumenterar 
 din webbtjänst, samt inkluderar URI's (webblänkar) 
 för att använda CRUD. Här är ett exempel: README för API
 Det ska finnas en README-fil som ger en beskrivning 
 av din webbapplikation.
-
 Båda dessa ska innehålla en README-fil med beskrivning av 
 lösningen samt eventuellt webblänk(ar) till publicerade 
 laborationer för testkörning.
@@ -21,63 +21,47 @@ laborationer för testkörning.
 
 
 
-??????????????3 CRUD
-?????????????Cors påverkar åtkomsten till HTTP från olika domäner, kan styras via applikationer
--------------om man öppnar helt, använd helst nyckel isf
-?????????????????Webbtjänsten skall kunna hantera CRUD-operationer, Create Read Update och Delete.
-
------------?????????Webbtjänst skapad enligt kraven ovan. Data från webbtjänsten ska presenteras i JSON-format.
-------------??????????Implementerat CRUD (Create Read Update Delete) som använder följande verb: GET, POST, PUT och DELETE.
--------------??????????Webbtjänsten ska ha möjlighet till "cross origin request". Det ska vara möjligt att testköra din webbtjänst från annan domän än den du publicerad till (om den är publicerad).
-----------Tänk på att validera input innan lagring i databas, och returnera tydliga felmeddelanden om något saknas.
-
-------------Webbplatsen ska använda Fetch API för att hämta (GET),
------------skicka data (POST) samt radera (DELETE) från och till webbtjänsten.
 
 
 ***********
 redovisning
 ************
 
-Lösningen ska publiceras till publikt tillgänglig webbhost alternativt redovisas med en video-demonstration.
-Källkoden ska publiceras till ett Github (eller annan webbtjänst för Git) repository.
-Det ska finnas en README-fil som ger en beskrivning av din webbapplikation.
+Lösningen ska publiceras till publikt tillgänglig webbhost
+ alternativt redovisas med en video-demonstration.
+--------Källkoden ska publiceras till ett Github
+ -------(eller annan webbtjänst för Git) repository.
+Det ska finnas en README-fil som ger en 
+beskrivning av din webbapplikation.
 
-Publicera din webbsida och webbtjänst på publikt tillgänglig webbhost.
-Var noga med att testköra efter publicering, och säkerställ att allting fungerar korrekt.
-Skapa en video-demonstration av din lösning där du visar och berättar hur denna fungerar. 
+Publicera din webbsida och webbtjänst på 
+publikt tillgänglig webbhost.
+Var noga med att testköra efter publicering, 
+och säkerställ 
+att allting fungerar korrekt.
+Skapa en video-demonstration av din lösning där du 
+visar och berättar hur denna fungerar. 
 Video-demonstrationen bör vara max fem minuter lång.
+validera kod
 
 Inlämning
-Moment 2 lämnas in som webblänkar till online git-repository för vardera lösning:
+Moment 2 lämnas in som webblänkar till online git-repository 
+för vardera lösning:
 
 en till Uppgift 1 för din webbtjänst,
 och en till Uppgift 2 för din webbplats.
-Båda dessa ska innehålla en README-fil med beskrivning av lösningen samt eventuellt webblänk(ar) till publicerade laborationer för testkörning.
+Båda dessa ska innehålla en README-fil med beskrivning 
+av lösningen samt eventuellt webblänk(ar) till publicerade 
+laborationer för testkörning.
 
-Bifoga även webblänkar till publicerad webbtjänst och webbplats alternativt länk till video-demonstration som kommentar i inlämningslådan.
-
-
-
-
------------1. Er diagram
--------------2, inst nodejs, express, sqlite3
-
-------------4 json
----------------behöver anv postman för rest
-
-planera REST:
-1. Vilka objekt ska vara resurser för apiet? (vilka tabeller)
-2. Planera vilka URL som behövs (sökvägar) www.bla.se/users
-3. Planera hur datan ska presenteras (json) objekt, arrayer 
-4. bestäm HTTP metod för var resurs vilka CRUD metodre ska finnas
-
-----------Uppgiften går ut på att skapa en applikation som hanterar arbetserfarenheter, 
-----------så som tidigare arbetsplatser, vad du arbetade med, 
-----------längd på anställning etctera (du kan användad fiktiv data om så önskas).
+Bifoga även webblänkar till publicerad webbtjänst och webbplats 
+alternativt länk till video-demonstration som kommentar i 
+inlämningslådan.
 
 
------------------Webbtjänsten skall skapas med hjälp av NodeJs, Express samt en valfri relations-databas.
+
+
+
 
 ***************************
 Följande funktionalitet ska finnas i din lösning för godkänt:
@@ -134,6 +118,35 @@ Följande funktionalitet ska finnas i din lösning för godkänt:
 ------------------------Använd med fördel en automatiserad utvecklingsmiljö från tidigare kurs. 
 -------------------------Och SASS/SCSS är ok att använda.
 
+planera REST:
+1. Vilka objekt ska vara resurser för apiet? (vilka tabeller)
+2. Planera vilka URL som behövs (sökvägar) www.bla.se/users
+3. Planera hur datan ska presenteras (json) objekt, arrayer 
+4. bestäm HTTP metod för var resurs vilka CRUD metodre ska finnas
+
+----------Uppgiften går ut på att skapa en applikation som hanterar arbetserfarenheter, 
+----------så som tidigare arbetsplatser, vad du arbetade med, 
+----------längd på anställning etctera (du kan användad fiktiv data om så önskas).
 
 
+-----------------Webbtjänsten skall skapas med hjälp av NodeJs, Express samt en valfri relations-databas.
 
+
+-----------1. Er diagram
+-------------2, inst nodejs, express, sqlite3
+
+------------4 json
+---------------behöver anv postman för rest
+
+??????????????3 CRUD
+?????????????Cors påverkar åtkomsten till HTTP från olika domäner, kan styras via applikationer
+-------------om man öppnar helt, använd helst nyckel isf
+?????????????????Webbtjänsten skall kunna hantera CRUD-operationer, Create Read Update och Delete.
+
+-----------?????????Webbtjänst skapad enligt kraven ovan. Data från webbtjänsten ska presenteras i JSON-format.
+------------??????????Implementerat CRUD (Create Read Update Delete) som använder följande verb: GET, POST, PUT och DELETE.
+-------------??????????Webbtjänsten ska ha möjlighet till "cross origin request". Det ska vara möjligt att testköra din webbtjänst från annan domän än den du publicerad till (om den är publicerad).
+----------Tänk på att validera input innan lagring i databas, och returnera tydliga felmeddelanden om något saknas.
+
+------------Webbplatsen ska använda Fetch API för att hämta (GET),
+-----------skicka data (POST) samt radera (DELETE) från och till webbtjänsten.

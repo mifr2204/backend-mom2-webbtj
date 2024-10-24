@@ -16,8 +16,6 @@ const port = 3000;
 
 app.use(express.json());
 app.use(cors({
-  Origin: 'http://127.0.0.1:5000/',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 }));
 
 //Start av applikationen
